@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // import { StackNavigator } from './scr/navigator/StackNavigator';
 // import { MenuLateralBasico } from './scr/navigator/MenuLateralBasico';
 import { MenuLateral } from './scr/navigator/MenuLateral';
+import { Tabs } from './scr/navigator/Tabs';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <MenuLateral />
       {/* <MenuLateralBasico /> */}
       {/* <StackNavigator /> */}
+      {/* <Tabs /> */}
     </NavigationContainer >
   );
 }

@@ -1,12 +1,13 @@
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
 import { Text, useWindowDimensions, View, Image } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { styles } from '../theme/appTheme';
-import { StackNavigator } from './StackNavigator';
+// import { StackNavigator } from './StackNavigator';
+import { Tabs } from './Tabs';
 
-const Drawer = createDrawerNavigator();
 
 // const Stack = createStackNavigator();
 
@@ -21,14 +22,16 @@ const Drawer = createDrawerNavigator();
 //     );
 // }
 
+const Drawer = createDrawerNavigator();
+
 export const MenuLateral = () => {
 
-    const { width } = useWindowDimensions();
+    const { width } = useWindowDimensions();//no la vamos a usar!
     return (
     <Drawer.Navigator
         drawerContent={(props) => <MenuInterno { ...props } />}
     >
-        <Drawer.Screen name="StackNavigator" component={StackNavigator} />
+        <Drawer.Screen name="Tabs" component={Tabs} />
         <Drawer.Screen name="SettingsScreen" component={ SettingsScreen } />
         {/* <Drawer.Screen name="SettingsScreen" component={ SettingsStackScreen } /> */}
     </Drawer.Navigator>
@@ -52,18 +55,26 @@ const MenuInterno = ( { navigation }: DrawerContentComponentProps ) => {
             <View style={ styles.menuContainer }>
                 <View >
                     <TouchableOpacity 
-                        style={ styles.menuBoton }
-                        onPress={ () => navigation.navigate('StackNavigator') }
+                        style={ {
+                            ...styles.menuBoton,
+                            flexDirection: 'row',
+                        } }
+                        onPress={ () => navigation.navigate('Tabs') }
                         // onPress={ () => props.navigation.navigate('StackNavigator') }// ** si no lo quiero desestructurar
                     >
-                        <Text style={ styles.menuTexto }>Navegación</Text>
+                        <Ionicons name="ios-duplicate" size={20} color="grey" />
+                        <Text style={ {...styles.menuTexto, paddingStart: 10} }>Tabs</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
-                        style={ styles.menuBoton }
+                        style={ {
+                            ...styles.menuBoton,
+                            flexDirection: 'row',
+                        }  }
                         onPress={ () => navigation.navigate('SettingsScreen') }
                     >
-                        <Text style={ styles.menuTexto }>Ajustes</Text>
+                        <Ionicons name="ios-settings" size={20} color="grey" />
+                        <Text style={ {...styles.menuTexto, paddingStart: 10} }>Ajustes</Text>
                     </TouchableOpacity>
                 </View>
             </View>

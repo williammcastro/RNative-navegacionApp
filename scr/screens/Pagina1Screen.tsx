@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Text, View, TouchableOpacity } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { styles } from '../theme/appTheme'
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 interface Props extends StackScreenProps<any, any>{};
 
@@ -15,10 +17,12 @@ export const Pagina1Screen = ( {navigation}: Props ) => {
     // useEffect(() => {
     //     navigation.setOptions({
     //         headerLeft: () => (
-    //             <Button 
-    //                 title='Menu'
-    //                 onPress={() => navigation.toggleDrawer()}>
-    //             </Button>
+    //             <TouchableOpacity
+    //                 style={{ marginLeft: 10 }}
+    //                 onPress={() => navigation.toggleDrawer()}
+    //             > 
+    //                 <Ionicons name="ios-menu" size={20} color="black" />
+    //             </TouchableOpacity>
     //         )
     //     })
     // }, [])
@@ -39,13 +43,14 @@ export const Pagina1Screen = ( {navigation}: Props ) => {
                 <TouchableOpacity
                     style={ {
                         ...styles.botonGrande,
-                        backgroundColor: 'lightblue',
+                        backgroundColor: '#5856D6',
                     } }
                     onPress={() => navigation.navigate('PersonaScreen', {
                         id: 1,
                         nombre: 'Juan'
                     })}
                 >
+                    <Ionicons name="body-outline" size={40} color="white" />
                     <Text style={ styles.textobotonGrande }>Juan</Text>
                 </TouchableOpacity>
 
@@ -56,6 +61,7 @@ export const Pagina1Screen = ( {navigation}: Props ) => {
                         nombre: 'Maria'
                     })}
                 >
+                    <Ionicons name="woman-outline" size={40} color="white" />
                     <Text style={ styles.textobotonGrande }>Maria</Text>
                 </TouchableOpacity>
             </View>

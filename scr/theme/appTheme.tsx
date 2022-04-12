@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
 
+export const colores = {
+    primary: "#5856D6",
+    // primary: "blue",
+    secondary: "green",
+}
+
 
 export const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
+
     globalMargin: {
         marginHorizontal: 20,
     },
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     },
     botonGrande: {
         width: 100,
-        height: 50,
+        height: 100,
         backgroundColor: 'orange',
         borderRadius: 20,
         alignItems: 'center',
@@ -46,5 +47,6 @@ export const styles = StyleSheet.create({
     },
     menuTexto: {
         fontSize: 20,
+        // paddingStart: 5,
     },
 });
