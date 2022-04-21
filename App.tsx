@@ -7,23 +7,25 @@ import { NavigationContainer } from '@react-navigation/native';
 // import { MenuLateralBasico } from './scr/navigator/MenuLateralBasico';
 import { MenuLateral } from './scr/navigator/MenuLateral';
 import { Tabs } from './scr/navigator/Tabs';
+import { AuthProvider } from './scr/context/AuthContext';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MenuLateral />
-      {/* <MenuLateralBasico /> */}
-      {/* <StackNavigator /> */}
-      {/* <Tabs /> */}
+      <AppState>  
+        <MenuLateral />
+        {/* <MenuLateralBasico /> */}
+        {/* <StackNavigator /> */}
+        {/* <Tabs /> */}
+      </AppState>
     </NavigationContainer >
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const AppState = ( { children }: any ) => {
+  return(
+    <AuthProvider>
+      { children }
+    </AuthProvider>
+  )
+}

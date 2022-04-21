@@ -28,6 +28,7 @@ export const Pagina1Screen = ( {navigation}: Props ) => {
     // }, [])
     
     
+    
     // console.log(navigation)
     return (
 

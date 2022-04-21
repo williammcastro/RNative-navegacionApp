@@ -1,9 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 
 import { RootStackParams } from '../navigator/StackNavigator'
+import { AuthContext } from '../context/AuthContext'
 
 // //inicio tipado de datos forma rapida 
 // interface RouterParams {
@@ -16,6 +17,9 @@ interface Props extends StackScreenProps<RootStackParams, 'PersonaScreen'>{};
 
 
 export const PersonaScreen = ( { route, navigation }: Props) => {
+
+    const { changeUsername } = useContext(AuthContext);
+
     // console.log('estos son los props.route', route)
     // const params = route.params as RouterParams;// adicional para tipado rapido y asi quitar el !
     const params = route.params;
@@ -25,6 +29,12 @@ export const PersonaScreen = ( { route, navigation }: Props) => {
             title: params.nombre,
         })
     }, [])
+
+    useEffect(() => {
+        //disparar la accion de cambiar el nombre cahngeUsername
+        changeUsername(params.nombre);
+    }, [])
+    
 
     return (
         <View style={ styles.globalMargin }>
@@ -36,3 +46,4 @@ export const PersonaScreen = ( { route, navigation }: Props) => {
         </View>
     )
 }
+
